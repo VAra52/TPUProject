@@ -1,0 +1,3 @@
+ALTER TABLE login_codes
+ALTER COLUMN expires_at TYPE BIGINT
+    USING (EXTRACT(EPOCH FROM expires_at) * 1000)::BIGINT;

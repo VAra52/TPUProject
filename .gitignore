@@ -1,0 +1,16 @@
+# Gradle
+.gradle/
+build/
+
+# Kotlin
+.kotlin/
+
+# IntelliJ
+.idea/
+*.iml
+out/
+
+# Секреты и мусор ОС
+.env
+.DS_Store
+Thumbs.db

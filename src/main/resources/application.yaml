@@ -1,0 +1,33 @@
+ktor:
+  deployment:
+    port: 8080
+  application:
+    modules:
+      - app.Mainfabric.HttpKt.configureHttp
+      - app.Mainfabric.SerializationKt.configureSerialization
+      - app.Mainfabric.SecurityKt.configureSecurity
+      - app.Mainfabric.StatusPagesKt.configureStatusPages
+      - app.Mainfabric.DatabaseKt.configureDatabase
+      - app.Mainfabric.RateLimitingKt.configureRateLimiting
+      - app.Mainfabric.RoutingKt.configureRouting
+
+database:
+  url: "jdbc:postgresql://localhost:5432/fabric"
+  user: "fabric"
+  password: "fabric"
+  maxPoolSize: 10
+
+auth:
+  allowedDomains:
+    - "tpu.ru"                      # замените на домен(ы) вашего университета
+  codeTtlMinutes: 10
+  maxAttempts: 5
+  devPrintCode: true                 # код пишется в консоль вместо письма
+  codeSecret: "$CODE_SECRET:dev-code-secret-change-me"
+
+jwt:
+  issuer: "fabric"
+  audience: "fabric-app"
+  realm: "fabric"
+  secret: "$JWT_SECRET:dev-jwt-secret-change-me-at-least-32-chars"
+  expiresInSeconds: 604800

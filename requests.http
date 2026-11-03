@@ -1,0 +1,16 @@
+POST http://localhost:8080/auth/request-code
+Content-Type: application/json
+
+{ "email": "aak45@tpu.ru" }
+
+### 2. подтвердить код
+POST http://localhost:8080/auth/verify
+Content-Type: application/json
+
+{ "email": "aak45@tpu.ru", "code": "ВАШ_КОД" }
+
+> {% client.global.set("token", response.body.token); %}
+
+### 3. проверить токен
+GET http://localhost:8080/me
+Authorization: Bearer {{token}}
