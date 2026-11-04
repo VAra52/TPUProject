@@ -14,3 +14,28 @@ Content-Type: application/json
 ### 3. проверить токен
 GET http://localhost:8080/me
 Authorization: Bearer {{token}}
+
+### 4. создать инициативу
+POST http://localhost:8080/initiatives
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{ "title": "Вечер настольных игр", "description": "Раз в неделю собираемся в общежитии и играем" }
+
+> {% client.global.set("initiativeId", response.body.id); %}
+
+### 5. список (экран 2)
+GET http://localhost:8080/initiatives?limit=20&offset=0
+Authorization: Bearer {{token}}
+
+### 6. детали (экран 3)
+GET http://localhost:8080/initiatives/{{initiativeId}}
+Authorization: Bearer {{token}}
+
+### 7. проголосовать
+PUT http://localhost:8080/initiatives/{{initiativeId}}/vote
+Authorization: Bearer {{token}}
+
+### 8. убрать голос
+DELETE http://localhost:8080/initiatives/{{initiativeId}}/vote
+Authorization: Bearer {{token}}

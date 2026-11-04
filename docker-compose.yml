@@ -1,6 +1,7 @@
 services:
   db:
     image: postgres:16
+    restart: unless-stopped
     environment:
       POSTGRES_DB: fabric
       POSTGRES_USER: fabric
@@ -11,3 +12,4 @@ services:
       - pgdata:/var/lib/postgresql/data
 volumes:
   pgdata:
+

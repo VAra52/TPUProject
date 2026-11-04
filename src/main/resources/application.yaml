@@ -19,7 +19,7 @@ database:
 
 auth:
   allowedDomains:
-    - "tpu.ru"                      # замените на домен(ы) вашего университета
+    - "tpu.ru"                      # домен университета
   codeTtlMinutes: 10
   maxAttempts: 5
   devPrintCode: true                 # код пишется в консоль вместо письма
@@ -31,3 +31,6 @@ jwt:
   realm: "fabric"
   secret: "$JWT_SECRET:dev-jwt-secret-change-me-at-least-32-chars"
   expiresInSeconds: 604800
+
+voting:
+  secret: "$VOTE_SECRET:dev-vote-secret-change-me"

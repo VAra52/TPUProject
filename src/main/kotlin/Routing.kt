@@ -9,11 +9,13 @@ fun Application.configureRouting() {
     val config = environment.config
     val jwtService = JwtService(config)
     val authService = AuthService(config, jwtService, environment.log)
+    val initiativeService = InitiativeService(config)
 
     routing {
         get("/health") { call.respondText("ok") }
 
         authRoutes(authService)
+        initiativeRoutes(initiativeService)
 
         authenticate("auth-jwt") {
             get("/me") { call.respond(MeResponse(call.userId().toString())) }
